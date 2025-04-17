@@ -223,6 +223,7 @@ void GetHardwareExtensions(int notest)
 
     egl_eglBindAPI(EGL_OPENGL_ES_API);
     if (egl_eglInitialize(eglDisplay, NULL, NULL) != EGL_TRUE) {
+        printf("ERROR calling egl_eglInitialize\n");
         LOGE("Error while gathering supported extension (eglInitialize: %s), default to none\n", PrintEGLError(0));
         egl_eglTerminate(eglDisplay);
         return;
@@ -248,17 +249,20 @@ void GetHardwareExtensions(int notest)
     }
 #endif
     if(!configsFound) {
+        printf("!configsFound\n");
         SHUT_LOGE("Error while gathering supported extension (eglChooseConfig: %s), default to none\n", PrintEGLError(0));
         egl_eglTerminate(eglDisplay);
         return;
     }
     eglContext = egl_eglCreateContext(eglDisplay, pbufConfigs[0], EGL_NO_CONTEXT, (hardext.esversion==1)?egl_context_attrib:egl_context_attrib_es2);
     if(!eglContext) {
+        printf("!eglContext\n");
         SHUT_LOGE("Error while gathering supported extension (eglCreateContext: %s), default to none\n", PrintEGLError(0));
         return;
     }
     eglSurface = egl_eglCreatePbufferSurface(eglDisplay, pbufConfigs[0], egl_attribs);
     if(!eglSurface) {
+        printf("!eglSurface\n");
         SHUT_LOGE("Error while gathering supported extension (eglCreatePBufferSurface: %s), default to none\n", PrintEGLError(0));
         egl_eglDestroyContext(eglDisplay, eglContext);
         egl_eglTerminate(eglDisplay);
@@ -267,9 +271,14 @@ void GetHardwareExtensions(int notest)
     egl_eglMakeCurrent(eglDisplay, eglSurface, eglSurface, eglContext);
 #endif
     tested = 1;
+    printf("Test log message location line 274 in hardext.c\n");
+
     LOAD_GLES(glGetString);
     LOAD_GLES(glGetIntegerv);
     LOAD_GLES(glGetError);
+
+    printf("Now get extensions\n");
+
     // Now get extensions
     const char *Exts = (const char *) gles_glGetString(GL_EXTENSIONS);
 

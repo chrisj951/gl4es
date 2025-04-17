@@ -232,8 +232,17 @@ printf("dlsym apply%s\n",name);
     return dlsym((void*)(~(uintptr_t)0), name);
 #elif !defined NO_LOADER
 printf("dlsym %s\n",name);
-    return dlsym(lib, name);
-#else
+dlerror(); 
+    void *sym = dlsym(lib, name);
+    const char *error = dlerror();
+    if (error != NULL) {
+        fprintf(stderr, "dlsym failed: %s\n", error);
+        // handle error
+    } else {
+        printf("dlsym succeeded, symbol address: %p\n", sym);
+    }
+    return sym;
+    #else
 printf("just returning null %s\n",name);
     return NULL;
 #endif

@@ -138,6 +138,9 @@ EXPORT extern void *egl;
             if (lib != NULL) { \
                 lib##_##name = (name##_PTR)__VA_ARGS__; \
             } \
+        else { \
+            WARN_NULL(##lib); \
+        } \
             WARN_NULL(lib##_##name); \
         } \
     }

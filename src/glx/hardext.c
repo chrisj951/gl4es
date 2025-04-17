@@ -273,7 +273,8 @@ void GetHardwareExtensions(int notest)
     // Now get extensions
     const char *Exts = (const char *) gles_glGetString(GL_EXTENSIONS);
     // Parse them!
-    #define S(A, B, C) if(strstr(Exts, A)) { hardext.B = 1; SHUT_LOGD("Extension %s detected%s",A, C?" and used\n":"\n"); } 
+    #define S(A, B, C) if(strstr(Exts, A)) { hardext.B = 1; SHUT_LOGD("Extension %s detected%s",A, C?" and used\n":"\n"); }
+    printf("hardext.esversion is %d", hardext.esversion) 
     if(hardext.esversion>1) hardext.npot = 1;
     if(strstr(Exts, "GL_APPLE_texture_2D_limited_npot ")) hardext.npot = 1;
     if(strstr(Exts, "GL_IMG_texture_npot ")) hardext.npot = 1; // it should enable mipmap (so hardext.npot=2), but mipmap (so level > 0) needs to be POT-sized?!!

@@ -200,6 +200,8 @@ void load_libs() {
     WARN_NULL(egl);
 
 #ifndef NO_GBM
+    const char *gbm_override = GetEnvVar("LIBGL_GBM");
+    gbm = open_lib(gbm_lib, gbm_override);
     const char *drm_override = GetEnvVar("LIBGL_DRM");
     drm = open_lib(drm_lib, drm_override);
 #endif

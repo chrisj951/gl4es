@@ -223,9 +223,17 @@ void GetHardwareExtensions(int notest)
     }
     else
 #endif
+    
+    LOAD_EGL_EXT(eglGetPlatformDisplay);
+    
+    if(egl_eglGetPlatformDisplay) {
+        eglDisplay = egl_eglGetPlatformDisplay(EGL_PLATFORM_GBM_KHR, gbmdev, NULL);
+        printf("called egl_eglGetPlatformDisplay(EGL_PLATFORM_GBM_KHR, gbmdev, NULL)")
+    
+    } else {
+        printf("egl_eglGetPlatformDisplay was not found")
 
-    eglDisplay = OpenGBMDisplay(EGL_DEFAULT_DISPLAY);
-
+    }
     egl_eglBindAPI(EGL_OPENGL_ES_API);
     if (egl_eglInitialize(eglDisplay, NULL, NULL) != EGL_TRUE) {
         printf("ERROR calling egl_eglInitialize\n");

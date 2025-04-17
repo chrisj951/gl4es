@@ -16,6 +16,8 @@
 #include <gbm.h>
 #include <unistd.h>
 
+#include "gbmfunc.h"
+
 #ifndef EGL_PLATFORM_GBM_KHR
 #define EGL_PLATFORM_GBM_KHR                     0x31D7
 #endif
@@ -228,6 +230,8 @@ void GetHardwareExtensions(int notest)
     else
 #endif
     
+    init_drm_and_gbm();
+
     egl_eglGetPlatformDisplay = 
     (PFNEGLGETPLATFORMDISPLAYPROC)dlsym(egl, "eglGetPlatformDisplay");
 
@@ -237,7 +241,7 @@ void GetHardwareExtensions(int notest)
         exit(1);
     }
 
-    struct gbm_device *gbm_device = gbm_create_device(fd);
+    struct gbm_device *gbm_device = gbmdrm_gbm_create_device(fd);
     if (!gbm) {
         fprintf(stderr, "Failed to create GBM device\n");
         close(fd);

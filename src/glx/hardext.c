@@ -223,11 +223,8 @@ void GetHardwareExtensions(int notest)
     }
     else
 #endif
-    
-egl_eglGetPlatformDisplay = 
-(PFNEGLGETPLATFORMDISPLAYPROC)dlsym(egl, "eglGetPlatformDisplay");
 
-eglDisplay = egl_eglGetPlatformDisplay(EGL_PLATFORM_GBM_KHR,gbm_device, NULL);
+    eglDisplay = OpenGBMDisplay(EGL_DEFAULT_DISPLAY);
 
     egl_eglBindAPI(EGL_OPENGL_ES_API);
     if (egl_eglInitialize(eglDisplay, NULL, NULL) != EGL_TRUE) {

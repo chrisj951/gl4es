@@ -110,7 +110,6 @@ static const char *egl_lib[] = {
 
 void *open_lib(const char **names, const char *override) {
     void *lib = NULL;
-
     char path_name[PATH_MAX + 1];
     int flags = RTLD_LOCAL | RTLD_NOW;
 #if defined(RTLD_DEEPBIND)
@@ -200,12 +199,6 @@ void load_libs() {
 #endif
     WARN_NULL(egl);
 
-#ifndef NO_GBM
-    const char *gbm_override = GetEnvVar("LIBGL_GBM");
-    gbm = open_lib(gbm_lib, gbm_override);
-    const char *drm_override = GetEnvVar("LIBGL_DRM");
-    drm = open_lib(drm_lib, drm_override);
-#endif
 }
 #endif
 

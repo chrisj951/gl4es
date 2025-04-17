@@ -136,7 +136,7 @@ void GetHardwareExtensions(int notest)
 #else
     // used EGL & GLES functions
     if(NULL == egl){
-        WARN_NULL("EGL Library");
+        printf("ERROR : EGL Library is null");
     } else {
         LOAD_EGL(eglBindAPI);
         LOAD_EGL(eglInitialize);

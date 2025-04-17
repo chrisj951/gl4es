@@ -286,12 +286,13 @@ void GetHardwareExtensions(int notest)
         hardext.npot = 1;
     }
     if(strstr(Exts, "GL_IMG_texture_npot ")) {
-        printf("GL_IMG_texture_npot = 1"); 
+        printf("GL_IMG_texture_npot setting hardext.npot = 1"); 
         hardext.npot = 1; // it should enable mipmap (so hardext.npot=2), but mipmap (so level > 0) needs to be POT-sized?!!
     }
    
     if(strstr(Exts, "GL_ARB_texture_non_power_of_two ") || strstr(Exts, "GL_OES_texture_npot ")){ 
-        hardext.npot = 3
+        printf("GL_ARB_texture_non_power_of_two or GL_OES_texture_npot, setting hardext.npot = 3"); 
+        hardext.npot = 3;
     };
     printf("hardext.npot is %d\n", hardext.npot); 
 

@@ -220,7 +220,7 @@ void GetHardwareExtensions(int notest)
     else
 #endif
     
-    eglDisplay = egl_eglGetDisplay(EGL_DEFAULT_DISPLAY);
+    eglDisplay = egl_eglGetDisplay(EGL_PLATFORM_GBM_KHR);
 
     egl_eglBindAPI(EGL_OPENGL_ES_API);
     if (egl_eglInitialize(eglDisplay, NULL, NULL) != EGL_TRUE) {

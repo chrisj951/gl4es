@@ -237,7 +237,7 @@ void GetHardwareExtensions(int notest)
         exit(1);
     }
 
-    struct gbm_device *gbm = gbm_create_device(fd);
+    struct gbm_device *gbm_device = gbm_create_device(fd);
     if (!gbm) {
         fprintf(stderr, "Failed to create GBM device\n");
         close(fd);

@@ -135,7 +135,7 @@ void GetHardwareExtensions(int notest)
     SHUT_LOGD("Hardware test on current Context...\n");
 #else
     // used EGL & GLES functions
-    if(null == egl){
+    if(NULL == egl){
         WARN_NULL("EGL Library");
     } else {
         LOAD_EGL(eglBindAPI);

@@ -199,6 +199,10 @@ void load_libs() {
 #endif
     WARN_NULL(egl);
 
+#ifndef NO_GBM
+    const char *drm_override = GetEnvVar("LIBGL_DRM");
+    drm = open_lib(drm_lib, drm_override);
+#endif
 }
 #endif
 

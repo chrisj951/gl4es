@@ -85,6 +85,8 @@ static int testTextureCubeLod() {
     return compiled;
 }
 
+typedef EGLDisplay (*PFNEGLGETPLATFORMDISPLAYPROC)(EGLenum, void*, const EGLint*);
+
 EXPORT
 void GetHardwareExtensions(int notest)
 {
@@ -220,7 +222,10 @@ void GetHardwareExtensions(int notest)
     else
 #endif
     
-    eglDisplay = egl_eglGetDisplay(EGL_PLATFORM_GBM_KHR,gbm_device, NULL);
+PFNEGLGETPLATFORMDISPLAYPROC egl_eglGetPlatformDisplay = 
+(PFNEGLGETPLATFORMDISPLAYPROC)dlsym(libegl, "eglGetPlatformDisplay");
+
+eglDisplay = egl_eglGetPlatformDisplay(EGL_PLATFORM_GBM_KHR,gbm_device, NULL);
 
     egl_eglBindAPI(EGL_OPENGL_ES_API);
     if (egl_eglInitialize(eglDisplay, NULL, NULL) != EGL_TRUE) {

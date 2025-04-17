@@ -230,6 +230,12 @@ void GetHardwareExtensions(int notest)
     LoadGBMFunctions();
     eglDisplay = OpenGBMDisplay(EGL_PLATFORM_GBM_KHR);
 
+    if(eglDisplay){
+        printf("OpenGBMDisplay succeeded\n");
+    } else {
+        printf("OpenGBMDisplay failed\n");
+    }
+
     egl_eglBindAPI(EGL_OPENGL_ES_API);
     if (egl_eglInitialize(eglDisplay, NULL, NULL) != EGL_TRUE) {
         printf("ERROR calling egl_eglInitialize\n");

@@ -228,7 +228,7 @@ void GetHardwareExtensions(int notest)
     else
 #endif
     LoadGBMFunctions();
-    eglDisplay = OpenGBMDisplay(EGL_DEFAULT_DISPLAY);
+    eglDisplay = OpenGBMDisplay(EGL_PLATFORM_GBM_KHR);
 
     egl_eglBindAPI(EGL_OPENGL_ES_API);
     if (egl_eglInitialize(eglDisplay, NULL, NULL) != EGL_TRUE) {

@@ -138,6 +138,9 @@ void GetHardwareExtensions(int notest)
     if(NULL == egl){
         printf("ERROR : EGL Library is null");
     } else {
+        printf("ERROR : EGL Library is not null");
+    }
+
         LOAD_EGL(eglBindAPI);
         LOAD_EGL(eglInitialize);
         LOAD_EGL(eglGetDisplay);
@@ -149,7 +152,7 @@ void GetHardwareExtensions(int notest)
         LOAD_EGL(eglCreateContext);
         LOAD_EGL(eglQueryString);
         LOAD_EGL(eglTerminate);
-    }
+    
 
 
     EGLDisplay eglDisplay;

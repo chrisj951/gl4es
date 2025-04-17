@@ -92,6 +92,7 @@ EGLBoolean gl4es_eglQuerySurface(EGLDisplay dpy, EGLSurface surface, EGLint attr
 
 EGLBoolean gl4es_eglBindAPI(EGLenum api) {
     LOAD_EGL(eglBindAPI);
+    printf("About to call egl_eglBindAPI\n");
     return egl_eglBindAPI(EGL_OPENGL_ES_API);
 }
 

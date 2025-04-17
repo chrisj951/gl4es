@@ -12,6 +12,10 @@
 #include <EGL/egl.h>
 #include <EGL/eglext.h>
 
+#include <fcntl.h>
+#include <gbm.h>
+#include <unistd.h>
+
 #ifndef EGL_PLATFORM_GBM_KHR
 #define EGL_PLATFORM_GBM_KHR                     0x31D7
 #endif

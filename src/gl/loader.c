@@ -192,7 +192,7 @@ void load_libs() {
         printf("EGL override is set to %s\n", egl_override);
     }
     egl = open_lib(egl_lib, egl_override);
-    printf("Setting egl = open_lib(egl_lib, egl_override)\n");
+    printf("Setting egl = open_lib(egl_lib, %s)\n", egl_override);
 #else
     egl = open_lib(L"LIBGL_EGL", L"libEGL.dll");
     printf("Setting egl = open_lib(L"LIBGL_EGL", L"libEGL.dll")\n");

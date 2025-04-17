@@ -140,8 +140,8 @@ EXPORT extern void *egl;
             } else { \
                  WARN_NULL(lib); \
             } \
-            WARN_NULL(lib##_##name); \
         } \
+        WARN_NULL(lib##_##name); \
     }
 
 #define LOAD_RAW_3(lib, name, fnc1, fnc2, ...) \

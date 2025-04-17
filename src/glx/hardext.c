@@ -9,7 +9,8 @@
 #include "rpi.h"
 #endif
 #include "glx_gbm.h"
-#include <egl.h>
+#include <EGL/egl.h>
+#include <EGL/eglext.h>
 
 #ifndef EGL_PLATFORM_GBM_KHR
 #define EGL_PLATFORM_GBM_KHR                     0x31D7

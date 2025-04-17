@@ -276,7 +276,7 @@ void GetHardwareExtensions(int notest)
     // Parse them!
     #define S(A, B, C) if(strstr(Exts, A)) { hardext.B = 1; SHUT_LOGD("Extension %s detected%s",A, C?" and used\n":"\n"); }
     printf("hardext.esversion is %d\n", hardext.esversion); 
-    printf("Exts are [%d]\n", Exts); 
+    printf("Exts are [%s]\n", Exts); 
     if(hardext.esversion>1){
         printf("hardext.esversion>1 setting hardext.npot = 1"); 
         hardext.npot = 1;

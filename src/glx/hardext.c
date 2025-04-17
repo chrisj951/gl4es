@@ -141,16 +141,27 @@ void GetHardwareExtensions(int notest)
         printf("SUCCESS : EGL Library is not null\n");
     }
 
-        LOAD_EGL(eglBindAPI);
+    printf("About to load eglBindAPI\n");
+    LOAD_EGL(eglBindAPI);
+    printf("About to load eglInitialize\n");
         LOAD_EGL(eglInitialize);
+        printf("About to load eglGetDisplay\n");
         LOAD_EGL(eglGetDisplay);
+        printf("About to load eglCreatePbufferSurface\n");
         LOAD_EGL(eglCreatePbufferSurface);
+        printf("About to load eglDestroySurface\n");
         LOAD_EGL(eglDestroySurface);
+        printf("About to load eglDestroyContext\n");
         LOAD_EGL(eglDestroyContext);
+        printf("About to load eglMakeCurrent\n");
         LOAD_EGL(eglMakeCurrent);
+        printf("About to load eglChooseConfig\n");
         LOAD_EGL(eglChooseConfig);
+        printf("About to load eglCreateContext\n");
         LOAD_EGL(eglCreateContext);
+        printf("About to load eglQueryString\n");
         LOAD_EGL(eglQueryString);
+        printf("About to load eglTerminate\n");
         LOAD_EGL(eglTerminate);
     
 

@@ -213,7 +213,6 @@ void load_libs() {
 void* (APIENTRY_GL4ES *gles_getProcAddress)(const char *name);
 
 void* APIENTRY_GL4ES proc_address(void *lib, const char *name) {
-	printf("made it for %s\n",name);
     if (gles_getProcAddress){
 	    printf("gles_getProcAddress %s\n",name);
         return gles_getProcAddress(name);
@@ -231,7 +230,7 @@ printf("dlsym apply%s\n",name);
     // remove if it not needed
     return dlsym((void*)(~(uintptr_t)0), name);
 #elif !defined NO_LOADER
-printf("dlsym %s\n",name);
+printf("calling dlsym for %s\n",name);
 dlerror(); 
     void *sym = dlsym(lib, name);
     const char *error = dlerror();

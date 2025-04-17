@@ -161,6 +161,9 @@ if(NOT NO_GBM)
     include_directories(${KMSDRM_INCLUDE_DIRS})
 endif()
 
+if(NO_GBM)
+    add_definitions(-DNO_GBM)
+endif()
 
 #NOX11
 if(USE_CLOCK)

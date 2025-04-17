@@ -220,7 +220,7 @@ void GetHardwareExtensions(int notest)
     else
 #endif
     
-    eglDisplay = egl_eglGetDisplay(EGL_PLATFORM_GBM_KHR);
+    eglDisplay = egl_eglGetDisplay(EGL_DEFAULT_DISPLAY);
 
     egl_eglBindAPI(EGL_OPENGL_ES_API);
     if (egl_eglInitialize(eglDisplay, NULL, NULL) != EGL_TRUE) {
@@ -228,6 +228,8 @@ void GetHardwareExtensions(int notest)
         LOGE("Error while gathering supported extension (eglInitialize: %s), default to none\n", PrintEGLError(0));
         egl_eglTerminate(eglDisplay);
         return;
+    } else {
+        printf("egl_eglInitialize succeeded\n");
     }
 
     egl_eglChooseConfig(eglDisplay, configAttribs, pbufConfigs, 1, &configsFound);

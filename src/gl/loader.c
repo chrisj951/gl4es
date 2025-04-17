@@ -214,12 +214,13 @@ void* (APIENTRY_GL4ES *gles_getProcAddress)(const char *name);
 
 void* APIENTRY_GL4ES proc_address(void *lib, const char *name) {
 	printf("made it for %s\n",name);
-    if (gles_getProcAddress)
-	printf("gles_getProcAddress %s\n",name);
+    if (gles_getProcAddress){
+	    printf("gles_getProcAddress %s\n",name);
         return gles_getProcAddress(name);
+    }
 #ifdef AMIGAOS4
-printf("os4GetProcAddress %s\n",name);
-return os4GetProcAddress(name);
+        printf("os4GetProcAddress %s\n",name);
+        return os4GetProcAddress(name);
 #elif defined __EMSCRIPTEN__
 printf("emscripten_GetProcAddress %s\n",name);
     void *emscripten_GetProcAddress(const char *name);

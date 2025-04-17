@@ -135,17 +135,22 @@ void GetHardwareExtensions(int notest)
     SHUT_LOGD("Hardware test on current Context...\n");
 #else
     // used EGL & GLES functions
-    LOAD_EGL(eglBindAPI);
-    LOAD_EGL(eglInitialize);
-    LOAD_EGL(eglGetDisplay);
-    LOAD_EGL(eglCreatePbufferSurface);
-    LOAD_EGL(eglDestroySurface);
-    LOAD_EGL(eglDestroyContext);
-    LOAD_EGL(eglMakeCurrent);
-    LOAD_EGL(eglChooseConfig);
-    LOAD_EGL(eglCreateContext);
-    LOAD_EGL(eglQueryString);
-    LOAD_EGL(eglTerminate);
+    if(null == egl){
+        WARN_NULL("EGL Library");
+    } else {
+        LOAD_EGL(eglBindAPI);
+        LOAD_EGL(eglInitialize);
+        LOAD_EGL(eglGetDisplay);
+        LOAD_EGL(eglCreatePbufferSurface);
+        LOAD_EGL(eglDestroySurface);
+        LOAD_EGL(eglDestroyContext);
+        LOAD_EGL(eglMakeCurrent);
+        LOAD_EGL(eglChooseConfig);
+        LOAD_EGL(eglCreateContext);
+        LOAD_EGL(eglQueryString);
+        LOAD_EGL(eglTerminate);
+    }
+
 
     EGLDisplay eglDisplay;
     EGLSurface eglSurface;

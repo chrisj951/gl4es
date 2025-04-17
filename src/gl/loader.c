@@ -182,14 +182,17 @@ void load_libs() {
 
 #ifdef NOEGL
     egl = gles;
+    printf("Setting egl = gles\n");
 #elif !defined(_WIN32)
     const char *egl_override = GetEnvVar("LIBGL_EGL");
     if (!egl_override) {
         egl_override = DEFAULT_EGL;
     }
     egl = open_lib(egl_lib, egl_override);
+    printf("Setting egl = open_lib(egl_lib, egl_override)\n");
 #else
     egl = open_lib(L"LIBGL_EGL", L"libEGL.dll");
+    printf("Setting egl = open_lib(L"LIBGL_EGL", L"libEGL.dll")\n");
 #endif
     WARN_NULL(egl);
 

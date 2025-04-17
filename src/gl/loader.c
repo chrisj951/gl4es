@@ -206,7 +206,9 @@ void load_libs() {
 void* (APIENTRY_GL4ES *gles_getProcAddress)(const char *name);
 
 void* APIENTRY_GL4ES proc_address(void *lib, const char *name) {
+	printf("made it");
     if (gles_getProcAddress)
+		LOGD("Calling gles_getProcAddress on %s", name);
         return gles_getProcAddress(name);
 #ifdef AMIGAOS4
     return os4GetProcAddress(name);
@@ -218,8 +220,10 @@ void* APIENTRY_GL4ES proc_address(void *lib, const char *name) {
     // remove if it not needed
     return dlsym((void*)(~(uintptr_t)0), name);
 #elif !defined NO_LOADER
+    LOGD("Calling dlsym on %s", name);
     return dlsym(lib, name);
 #else
+	LOGD("Returning null on %s", name);
     return NULL;
 #endif
 }

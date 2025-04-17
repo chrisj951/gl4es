@@ -112,7 +112,7 @@ EXPORT extern void *egl;
 #define NO_LOADER
 #endif
 
-#define WARN_NULL(name) if (name == NULL) LOGD("warning, %s line %d function %s: " #name " is NULL\n", __FILE__, __LINE__, __func__);
+#define WARN_NULL(name) if (name == NULL) LOGD("recompiled ? warning, %s line %d function %s: " #name " is NULL\n", __FILE__, __LINE__, __func__);
 
 #define MSVC_SPC(MACRO, ARGS) MACRO ARGS
 

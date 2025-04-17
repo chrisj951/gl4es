@@ -213,7 +213,7 @@ void load_libs() {
 void* (APIENTRY_GL4ES *gles_getProcAddress)(const char *name);
 
 void* APIENTRY_GL4ES proc_address(void *lib, const char *name) {
-	printf("made it");
+	printf("made it for %s\n",name);
     if (gles_getProcAddress)
 		LOGD("Calling gles_getProcAddress on %s", name);
         return gles_getProcAddress(name);

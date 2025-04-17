@@ -227,6 +227,19 @@ void GetHardwareExtensions(int notest)
     egl_eglGetPlatformDisplay = 
     (PFNEGLGETPLATFORMDISPLAYPROC)dlsym(egl, "eglGetPlatformDisplay");
 
+    int fd = open("/dev/dri/card0", O_RDWR);
+    if (fd < 0) {
+        perror("Failed to open /dev/dri/card0");
+        exit(1);
+    }
+
+    struct gbm_device *gbm = gbm_create_device(fd);
+    if (!gbm) {
+        fprintf(stderr, "Failed to create GBM device\n");
+        close(fd);
+        exit(1);
+    }
+
     eglDisplay = egl_eglGetPlatformDisplay(EGL_PLATFORM_GBM_KHR,gbm_device, NULL);
 
     egl_eglBindAPI(EGL_OPENGL_ES_API);

@@ -225,7 +225,7 @@ void GetHardwareExtensions(int notest)
 #endif
     
 egl_eglGetPlatformDisplay = 
-(PFNEGLGETPLATFORMDISPLAYPROC)dlsym(libegl, "eglGetPlatformDisplay");
+(PFNEGLGETPLATFORMDISPLAYPROC)dlsym(egl, "eglGetPlatformDisplay");
 
 eglDisplay = egl_eglGetPlatformDisplay(EGL_PLATFORM_GBM_KHR,gbm_device, NULL);
 

@@ -475,6 +475,9 @@ void GetHardwareExtensions(int notest)
     // get GLES driver signatures...
     const char *vendor = (const char *) gles_glGetString(GL_VENDOR);
     SHUT_LOGD("Hardware vendor is %s\n", vendor);
+    if(NULL == vendor){
+        vendor = "ARM";
+    }
     if(strstr(vendor, "ARM"))
         hardext.vendor = VEND_ARM;
     else if(strstr(vendor, "Imagination Technologies"))

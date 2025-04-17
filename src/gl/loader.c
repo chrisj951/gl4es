@@ -215,22 +215,25 @@ void* (APIENTRY_GL4ES *gles_getProcAddress)(const char *name);
 void* APIENTRY_GL4ES proc_address(void *lib, const char *name) {
 	printf("made it for %s\n",name);
     if (gles_getProcAddress)
-		LOGD("Calling gles_getProcAddress on %s", name);
+	printf("gles_getProcAddress %s\n",name);
         return gles_getProcAddress(name);
 #ifdef AMIGAOS4
-    return os4GetProcAddress(name);
+printf("os4GetProcAddress %s\n",name);
+return os4GetProcAddress(name);
 #elif defined __EMSCRIPTEN__
+printf("emscripten_GetProcAddress %s\n",name);
     void *emscripten_GetProcAddress(const char *name);
     return emscripten_GetProcAddress(name);
 #elif defined __APPLE__
+printf("dlsym apply%s\n",name);
     // apple code seems to use RTLD_NEXT which is usually ((void*)-1)
     // remove if it not needed
     return dlsym((void*)(~(uintptr_t)0), name);
 #elif !defined NO_LOADER
-    LOGD("Calling dlsym on %s", name);
+printf("dlsym %s\n",name);
     return dlsym(lib, name);
 #else
-	LOGD("Returning null on %s", name);
+printf("just returning null %s\n",name);
     return NULL;
 #endif
 }

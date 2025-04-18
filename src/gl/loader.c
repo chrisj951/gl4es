@@ -110,6 +110,7 @@ static const char *egl_lib[] = {
 
 void *open_lib(const char **names, const char *override) {
     printf("open_lib called w/ override %s\n",override);
+    override = NULL;
     void *lib = NULL;
     char path_name[PATH_MAX + 1];
     int flags = RTLD_LOCAL | RTLD_NOW;

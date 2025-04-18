@@ -127,6 +127,8 @@ void *open_lib(const char **names, const char *override) {
         flags |= RTLD_DEEPBIND;
 #endif
     if (override) {
+        printf("second call open_lib called w/ override %s\n",override);
+
         if ((lib = dlopen(override, flags))) {
             strncpy(path_name, override, PATH_MAX);
             if(!globals4es.nobanner) LOGD("LIBGL:loaded: %s\n", path_name);

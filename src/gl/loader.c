@@ -242,6 +242,12 @@ dlerror();
         // handle error
     } else {
         printf("dlsym succeeded, symbol address: %p\n", sym);
+        Dl_info info;
+        if (dladdr(sym, &info)) {
+            printf("Loaded %s from: %s\n", name, info.dli_fname);
+        } else {
+            printf("dladdr failed\n");
+        }
     }
     return sym;
     #else

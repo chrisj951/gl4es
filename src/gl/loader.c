@@ -1,5 +1,6 @@
-#include "loader.h"
 #include <dlfcn.h>
+#include "loader.h"
+
 
 void (APIENTRY_GL4ES *gl4es_getMainFBSize)(GLint* width, GLint* height);
 

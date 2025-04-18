@@ -132,7 +132,7 @@ void *open_lib(const char **names, const char *override) {
             if(!globals4es.nobanner) LOGD("LIBGL:loaded: %s\n", path_name);
             return lib;
         } else {
-            LOGE("LIBGL_GLES override failed: %s\n", dlerror());
+            LOGE("recompiled LIBGL_GLES override failed: %s\n", dlerror());
         }
     }
     for (int p = 0; path_prefix[p]; p++) {
